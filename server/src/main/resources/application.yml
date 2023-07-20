@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    username: root
+    password: asifali_11
+    url: jdbc:mysql://localhost:3306/twitter?createDatabaseIfNotExist=true
+  jpa:
+    hibernate:
+      ddl-auto: update
