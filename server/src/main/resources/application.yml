@@ -6,3 +6,32 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 302899025836-lbvs67bkmo12soasc7ok9qj5fuu6aqu2.apps.googleusercontent.com
+            client-secret: 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
+            redirect-uri: "{baseUrl}/login/oauth2/code/google"
+            scope:
+              - email
+              - profile
+          github:
+            clientId: Iv1.731596c579d3b990
+            clientSecret: 1a16900f622b3b74d6d2e1efa40c53a63ad8705d
+  mail:
+    username: asifali11813047@gmail.com
+    password: aoqnfvevqwugymmp
+    host: smtp.gmail.com
+    port: 587
+
+
+
+server:
+  port: 8080
+
+
+

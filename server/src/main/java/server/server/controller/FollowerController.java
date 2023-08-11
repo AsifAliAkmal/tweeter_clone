@@ -18,7 +18,7 @@ public class FollowerController {
         return new ResponseEntity<>("Follow successfully.", HttpStatus.OK);
     }
 
-    @DeleteMapping("/unfollow")
+    @PutMapping("/unfollow")
     public ResponseEntity<String> removeFollowing(@RequestParam("userId")Long userId,@RequestParam("followingId") Long followingId){
         followerService.removeFollowing(userId,followingId);
         return new ResponseEntity<>("Un-Followed successfully.", HttpStatus.OK);

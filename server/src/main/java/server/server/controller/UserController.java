@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import server.server.dto.UserCredentialDTO;
 import server.server.dto.UserInfoDTO;
 import server.server.payload.ApiResponse;
+import server.server.service.mail.EmailService;
 import server.server.service.user.UserDetailsService;
 import server.server.service.user.UserService;
 
@@ -22,6 +23,11 @@ public class UserController {
     @Autowired
     UserDetailsService userDetailsService;
 
+    @GetMapping()
+    public String testCode(){
+        return "Success";
+    }
+
     @PostMapping("/login")
     public ResponseEntity<String> authenticateUser(@RequestBody UserCredentialDTO userCredentialDTO){
         ApiResponse apiResponse = userService.authenticateUser(userCredentialDTO);
@@ -30,7 +36,6 @@ public class UserController {
         }
         return  new ResponseEntity<>(apiResponse.getMessage(),HttpStatus.BAD_REQUEST);
     }
-
 
     @PostMapping("/signup")
     public ResponseEntity<String> createUser(@RequestBody UserInfoDTO userInfoDTO){
