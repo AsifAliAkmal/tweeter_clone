@@ -67,4 +67,12 @@ public class UserDetailsService {
         repository.save(userDetails);
         return new ApiResponse(true,"Successfully created.");
     }
+
+    public UserDetails findByUserId(Long userId){
+        return repository.findByUserId(userId).orElse(null);
+    }
+
+    public UserDetails saveToDB(UserDetails userDetails){
+        return repository.save(userDetails);
+    }
 }

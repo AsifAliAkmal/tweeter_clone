@@ -25,6 +25,6 @@ public class EmailService {
 
 
     public void sendEmailVerificationLink(String email,String body){
-        sendEmail(new String[]{email},"Testing JavaMailSender is working or not.",body);
+        sendEmail(new String[]{email},"Email Verification Link.",body);
     }
 }

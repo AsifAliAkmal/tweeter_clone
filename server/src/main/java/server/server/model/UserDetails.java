@@ -48,6 +48,7 @@ public class UserDetails {
     @JoinColumn(name="user_id")
     private User user;
 
+
     @CreationTimestamp
     @Column(name="created_at")
     private Instant createdAt;
