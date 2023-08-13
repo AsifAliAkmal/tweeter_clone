@@ -32,7 +32,7 @@ public class EngagementController {
     }
 
     @PostMapping("/remove_comment")
-    public void removeComment(CommentDTO commentDTO){
+    public void removeComment(@RequestBody  CommentDTO commentDTO){
         commentService.removeComment(commentDTO);
     }
 }

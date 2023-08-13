@@ -12,6 +12,7 @@ import server.server.repository.TweetsRepository;
 import server.server.service.engagement.EngagementService;
 import server.server.service.user.UserService;
 
+import java.time.temporal.TemporalField;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,11 +51,11 @@ public class TweetsService {
     }
 
     public List<TweetResponseDTO> findByUserIdIn(List<Long> userIds){
-        List<Tweets> tweetsList =  repository.findByUserIdInAndOrderByCreateAt(userIds);
+        List<Tweets> tweetsList =  repository.findByUserIdInOrderByCreateAtDesc(userIds);
         List<TweetResponseDTO> tweetResponseDTOList = new ArrayList<>();
         for(Tweets tweets : tweetsList){
             TweetResponseDTO tweetResponseDTO = new TweetResponseDTO(tweets.getId(),tweets.getMessage(),
-                    tweets.getEngagement().getCommentCount(),tweets.getEngagement().getLikeCount());
+                    tweets.getEngagement().getCommentCount(),tweets.getEngagement().getLikeCount(),tweets.getCreateAt());
             tweetResponseDTOList.add(tweetResponseDTO);
         }
         return tweetResponseDTOList;

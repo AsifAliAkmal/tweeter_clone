@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import server.server.dto.TweetResponseDTO;
 import server.server.dto.TweetsDTO;
+import server.server.exception.BadRequestException;
 import server.server.model.Follower;
 import server.server.model.Tweets;
 import server.server.payload.ApiResponse;
@@ -25,6 +26,14 @@ public class TweetPostService {
 
 
     public ApiResponse createTweet(TweetsDTO tweetsDTO){
+        if(tweetsDTO.getMessage() == null || tweetsDTO.getMessage().isEmpty()){
+            log.error("TweetPostService -> createTweet message is not present.");
+            throw new BadRequestException("Message is not present.");
+        }
+        else if(tweetsDTO.getUserId() == null){
+            log.error("TweetPostService -> createTweet userId is not present.");
+            throw new BadRequestException("Something went wrong.");
+        }
         return tweetsService.createTweet(tweetsDTO);
     }
 
@@ -45,7 +54,8 @@ public class TweetPostService {
     public ApiResponse deleteTweet(Long tweetId, Long userId) {
         Tweets tweets = tweetsService.findByUserIdAndTweetId(userId, tweetId);
         if(tweets == null){
-            return new ApiResponse(false,"This tweet is not created by you.");
+            log.error("TweetPostService -> deleteTweet tweet is not present.");
+            throw new BadRequestException("This tweet is not created by you.");
         }
         tweetsService.deleteTweet(tweets);
         return new ApiResponse(true,"Successfully deleted.");

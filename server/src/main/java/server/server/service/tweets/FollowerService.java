@@ -1,8 +1,10 @@
 package server.server.service.tweets;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import server.server.exception.BadRequestException;
 import server.server.model.Follower;
 import server.server.repository.FollowerRepository;
 
@@ -10,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Slf4j
 public class FollowerService {
     @Autowired
     FollowerRepository repository;
@@ -23,6 +26,14 @@ public class FollowerService {
     }
 
     public void addFollowing(Long userId, Long followingId) {
+        if(userId == null){
+            log.error("FollowerService -> addFollowing userId is null.");
+            throw new BadRequestException("Something went wrong.");
+        }
+        if(followingId == null){
+            log.error("FollowerService -> addFollowing followingId is null.");
+            throw new BadRequestException("Something went wrong.");
+        }
         Follower follower = repository.findByUserId(userId);
 
         if(follower == null){
@@ -43,8 +54,8 @@ public class FollowerService {
     public void removeFollowing(Long userId,Long followingId){
         Follower follower = repository.findByUserId(userId);
         if(follower == null){
-            //todo throw Exception
-            return;
+            log.error("FollowerService -> removeFollowing follower is null.");
+            throw new BadRequestException("You are not following.");
         }
         String[] arr = follower.getFollowing().split(",");
         List<String>  idList = new ArrayList<>();
