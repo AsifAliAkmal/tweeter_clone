@@ -42,6 +42,10 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail
 	implementation 'org.springframework.boot:spring-boot-starter-mail:3.1.2'
 
+	// https://mvnrepository.com/artifact/com.twilio.sdk/twilio
+	implementation 'com.twilio.sdk:twilio:9.10.0'
+
+
 
 }
 

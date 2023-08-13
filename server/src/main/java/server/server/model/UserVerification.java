@@ -21,8 +21,8 @@ public class UserVerification {
     private Long emailTokenExpiry;
 
     @Column(name = "phone_verification_code")
-    private Integer code;
+    private Integer otp;
 
     @Column(name = "phone_code_expiry")
-    private Long phoneCodeExpiry;
+    private Long otpExpiry;
 }

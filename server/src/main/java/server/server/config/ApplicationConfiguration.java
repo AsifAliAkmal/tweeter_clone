@@ -1,6 +1,7 @@
 package server.server.config;
 
 
+import com.twilio.Twilio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +12,7 @@ import server.server.repository.UserRepository;
 
 @Configuration
 public class ApplicationConfiguration {
+
     @Autowired
     UserRepository userRepository;
     @Bean

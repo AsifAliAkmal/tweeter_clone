@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface UserVerificationRepository  extends JpaRepository<UserVerification,Long> {
     Optional<UserVerification> findByEmailVerificationToken(String token);
+    Optional<UserVerification> findByOtp(int otp);
 }

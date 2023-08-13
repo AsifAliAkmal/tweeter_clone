@@ -23,4 +23,16 @@ public class VerificationController {
         userVerificationService.verifyEmail(token);
         return new ResponseEntity<>("Verifed Successfully.",HttpStatus.OK);
     }
+
+    @GetMapping("/generate_otp/{userId}")
+    public ResponseEntity<String> generateOTP(@PathVariable("userId") Long userId){
+        userVerificationService.generateOTPAndSend(userId);
+        return new ResponseEntity<>("OTP sent successfully!",HttpStatus.OK);
+    }
+
+    @GetMapping("/verify_otp")
+    public ResponseEntity<String> verifyOtp(@RequestParam("otp") int otp){
+        userVerificationService.verifyOtp(otp);
+        return new ResponseEntity<>("OTP successfully verified",HttpStatus.OK);
+    }
 }

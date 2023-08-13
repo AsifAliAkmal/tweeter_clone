@@ -24,7 +24,7 @@ spring:
             clientSecret: 1a16900f622b3b74d6d2e1efa40c53a63ad8705d
   mail:
     username: asifali11813047@gmail.com
-    password: aoqnfvevqwugymmp
+    password: dfhdhjfgsdhfs
     host: smtp.gmail.com
     port: 587
 
@@ -35,5 +35,9 @@ server:
 
 back-end-url: http://localhost:8080
 
+twilio:
+  account-id: sdgfhdsgfh
+  auth-token: ghsdgfhsdgfhjdsfgjhsd
+  phone-no: +16185911889
 
 
